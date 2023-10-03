@@ -38,13 +38,15 @@ export default function Login() {
         password,
       });
 
-      collectUser(response.account, response.token);
       toast({
         title: `Sucessfuly`,
         status: "success",
         isClosable: true,
         position: "top-right",
       });
+
+      collectUser(response.account, response.token);
+
       router.push("/");
       setIsLoading(false);
     } catch (error: any) {
@@ -62,8 +64,8 @@ export default function Login() {
   };
 
   const collectUser = (user: any, token: string) => {
-    setUser(user);
     api.defaults.headers.common["Authorization"] = `Bearer ${token}`;
+    setUser(user);
     Cookie.set("auth_token", token);
   };
 

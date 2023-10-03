@@ -27,13 +27,22 @@ export default function Rgister() {
   const toast = useToast();
 
   const handleRegister = async (event: any) => {
-    setIsLoading(true);
     event?.preventDefault();
+
+    setIsLoading(true);
+
     try {
       const { data: response } = await api.post("/register", {
         name,
         email,
         password,
+      });
+
+      toast({
+        title: `Successfully registered`,
+        status: "success",
+        isClosable: true,
+        position: "top-right",
       });
 
       router.push("/login");
