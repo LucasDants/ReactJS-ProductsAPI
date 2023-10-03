@@ -20,6 +20,7 @@ import { useQuery } from "@tanstack/react-query";
 export default function Home() {
   const [isLargerThan800] = useMediaQuery("(min-width: 800px)");
   const [isLargerThan580] = useMediaQuery("(min-width: 580px)");
+  const [isLargerThan1920] = useMediaQuery("(min-width: 1920px)");
 
   const {
     data: products,
@@ -41,7 +42,7 @@ export default function Home() {
         padding={10}
         paddingInline={isLargerThan800 ? 20 : 5}
         className="bg-orange-300  border-b-4 border-orange-400"
-        justifyContent={"space-between"}
+        justifyContent={isLargerThan1920 ? "space-evenly" : "space-between"}
       >
         <Box>
           <Flex gap={5} align={"center"}>

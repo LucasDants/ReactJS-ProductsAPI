@@ -10,10 +10,11 @@ import {
   Stack,
   Image,
   useToast,
+  Img,
 } from "@chakra-ui/react";
 import { Link } from "@chakra-ui/next-js";
 import { useRouter } from "next/navigation";
-import LoginImage from "@/assets/loginImage.jpg";
+
 import api from "@/services/api";
 import { useState } from "react";
 import Cookie from "js-cookie";
@@ -45,6 +46,7 @@ export default function Login() {
         position: "top-right",
       });
       router.push("/");
+      setIsLoading(false);
     } catch (error: any) {
       console.log("Error:", error?.response?.data?.message);
 
@@ -54,9 +56,8 @@ export default function Login() {
         isClosable: true,
         position: "top-right",
       });
-    } finally {
-      console;
       setIsLoading(false);
+    } finally {
     }
   };
 
@@ -67,10 +68,13 @@ export default function Login() {
   };
 
   return (
-    <Flex flex={1} direction={{ base: "column", md: "row" }}>
-      <Flex flex={1} display={{ base: "none", lg: "flex" }}>
-        <Image aspectRatio={1} objectFit="cover" src={LoginImage.src} />
-      </Flex>
+    <Flex
+      flex={1}
+      alignItems={"center"}
+      justifyContent={"center"}
+      direction={{ base: "column", md: "row" }}
+      style={{ height: "100vh" }}
+    >
       <Flex
         onSubmit={handleLogin}
         as={"form"}
@@ -79,7 +83,14 @@ export default function Login() {
         align="center"
         justify="center"
       >
-        <Stack spacing={4} w="full" maxW="md">
+        <Stack
+          spacing={4}
+          w="full"
+          maxW="md"
+          bg={"white"}
+          padding={"3rem"}
+          borderRadius={"1rem"}
+        >
           <Heading fontSize="2xl">Login</Heading>
 
           <FormControl id="email">

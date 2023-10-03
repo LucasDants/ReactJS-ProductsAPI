@@ -13,10 +13,10 @@ const Dropzone = ({ file, onChangeHandler }: any) => {
     <div className="">
       <div
         className="border border-dashed border-orange-500 relative "
-        onClick={onClickHandler}
+        onClick={onClickHandler} // Ativa o input quando a div é clicada
       >
         <input
-          ref={inputRef}
+          ref={inputRef} // Associa a referência ao elemento input
           type="file"
           className="cursor-pointer relative block opacity-0 w-full h-full z-50"
           onChange={onChangeHandler}

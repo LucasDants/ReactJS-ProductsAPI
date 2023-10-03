@@ -33,6 +33,5 @@
   },
   "devDependencies": {
     "@types/js-cookie": "^3.0.4"
-  },
-  "packageManager": "yarn@1.22.19"
+  }
 }

@@ -10,12 +10,13 @@ import {
   Stack,
   Image,
   useToast,
+  Img,
 } from "@chakra-ui/react";
 import { Link } from "@chakra-ui/next-js";
 import { useRouter } from "next/navigation";
-import RegisterImage from "@/assets/RegisterImage.jpg";
 import { useState } from "react";
 import api from "@/services/api";
+import LoginImage from "@/assets/loginImage.jpg";
 
 export default function Rgister() {
   const [name, setName] = useState("");
@@ -59,16 +60,7 @@ export default function Rgister() {
   };
 
   return (
-    <Flex flex={1} direction={{ base: "column", md: "row" }}>
-      <Flex flex={1} display={{ base: "none", lg: "flex" }}>
-        <Image
-          placeholder="blur"
-          aspectRatio={1}
-          objectFit="cover"
-          fallbackSrc={RegisterImage.src}
-          src={RegisterImage.src}
-        />
-      </Flex>
+    <Flex flex={1} direction={{ base: "column", md: "row" }} height={"full"}>
       <Flex
         onSubmit={handleRegister}
         as={"form"}
@@ -76,8 +68,16 @@ export default function Rgister() {
         flex={1}
         align="center"
         justify="center"
+        style={{ height: "100vh" }}
       >
-        <Stack spacing={4} w="full" maxW="md">
+        <Stack
+          spacing={4}
+          w="full"
+          maxW="md"
+          bg={"white"}
+          padding={"3rem"}
+          borderRadius={"1rem"}
+        >
           <Heading fontSize="2xl">Create an account</Heading>
           <FormControl id="name">
             <FormLabel>Name</FormLabel>

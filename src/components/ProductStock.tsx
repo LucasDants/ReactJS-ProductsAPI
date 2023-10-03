@@ -79,7 +79,10 @@ export default function ProductStock({ data }: ProductProps) {
   const [title, setTitle] = useState(data.title ?? "");
   const [price, setPrice] = useState<number | string>(data.price ?? "");
   const [description, setDescription] = useState(data.description ?? "");
-  const [file, setFile] = useState({ file: {}, url: undefined });
+  const [file, setFile] = useState({
+    file: {},
+    url: `${process.env.NEXT_PUBLIC_API_URL}/uploads/${data.imageURL}`,
+  });
   const [isLoading, setIsLoading] = useState(false);
 
   const cancelRef = React.useRef(null);
